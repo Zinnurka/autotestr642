@@ -1,16 +1,21 @@
-from selenium import webdriver
-import setting as s
-
-driver = webdriver.Chrome(s.conf_path)
+from application import Application
+import pytest
 
 
-def login_admin_page(username, password):
-    driver.get(s.url_admin + "/admin/login/")
-    driver.find_element_by_id('id_username').send_keys(username)
-    driver.find_element_by_id("id_password").send_keys(password)
-    driver.find_element_by_xpath("//input[@type='submit']").click()
+@pytest.fixture
+def app(request):
+    fixture = Application()
+    request.addfinalizer(fixture.destroy)
+    return fixture
 
 
-login_admin_page(s.username, s.password)
+def test_login(app):
+    app.login('admin', 'pass')
+
+
+
+
+
+
 
 
