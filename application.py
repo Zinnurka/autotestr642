@@ -4,14 +4,14 @@ import os.path
 url_admin = 'http://10.0.36.121:83'
 username1 = 'admin'
 password1 = '10Uyjvjd.'
-conf_path = os.path.abspath(os.curdir) + '\driver\chromedriver.exe'
 
 
 class Application:
 
     def __init__(self):
-        self.driver = webdriver.Chrome(conf_path)
+        self.driver = webdriver.Chrome(os.path.abspath(os.curdir) + '\driver\chromedriver.exe')
         self.driver.implicitly_wait(60)
+        self.driver.maximize_window()
 
     def login(self, username, password):
         driver = self.driver
@@ -22,4 +22,3 @@ class Application:
 
     def destroy(self):
         self.driver.quit()
-

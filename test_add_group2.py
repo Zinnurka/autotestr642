@@ -3,14 +3,14 @@ import pytest
 
 
 @pytest.fixture
-def app(request):
+def app():
     fixture = Application()
-    request.addfinalizer(fixture.destroy)
+
     return fixture
 
 
 def test_login(app):
-    app.login('admin', 'pass')
+    app.login('admin', '10Uyjvjd.')
 
 
 
