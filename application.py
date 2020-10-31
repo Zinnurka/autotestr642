@@ -9,7 +9,7 @@ password1 = '10Uyjvjd.'
 class Application:
 
     def __init__(self):
-        self.driver = webdriver.Chrome(os.path.abspath(os.curdir) + '\driver\chromedriver.exe')
+        self.driver = webdriver.Chrome('{0}\\driver\\chromedriver.exe'.format(os.path.abspath(os.curdir)))
         self.driver.implicitly_wait(60)
         self.driver.maximize_window()
 
